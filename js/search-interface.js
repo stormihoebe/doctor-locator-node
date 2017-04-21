@@ -1,11 +1,26 @@
 var Search = require('./../js/search.js').searchModule;
 
 var displayDoctors = function(doctorData){
-  $("#resultNumber").text("We found " + doctorData.length + " doctors that matched your search results.");
-  console.log(doctorData.length);
-  doctorData.forEach(function(doctor){
-    $("#doctorList").append("<li>" + doctor.profile.first_name + "</li>");
-  });
+
+  if (doctorData.length < 1) {
+    $("#resultNumber").text("Sorry. We were not able to locate any doctors based on your search. To get better results try the search again with a more general Medical Issue or increase the Maximum Distance.");
+  } else{
+    $("#resultNumber").text("We found " + doctorData.length + " doctors that matched your search results.");
+    console.log(doctorData.length);
+    doctorData.forEach(function(doctor){
+      $("#doctorList").append(
+        "<div class='panel panel-default'> <div class='panel-heading'><h3 class='panel-title'> Dr. "+
+        doctor.profile.first_name +" " + doctor.profile.last_name + " ("+doctor.profile.title+")"+
+        "</h3></div><div class='panel-body'>" +
+        "Specialties: "+ doctor.specialties[0].name + "<br>" +
+         doctor.profile.bio + "<br>" +
+        "Gender: "+ doctor.profile.gender + "<br><strong>Location</strong><br>" +
+        doctor.practices[0].visit_address.street + "<br>" +
+        doctor.practices[0].visit_address.city + ", " + doctor.practices[0].visit_address.state + " " + doctor.practices[0].visit_address.zip + "<br>" +
+        "</div></div>"
+      );
+    });
+  }
 };
 
 $(document).ready(function(){
@@ -13,16 +28,14 @@ $(document).ready(function(){
   $("#address").geocomplete({details:"form#property"});
   $("#property").submit(function(event){
     event.preventDefault();
+    $("#resultNumber").empty();
+    $("#doctorList").empty();
+
     var lat = $("#lat").val();
     var long = $("#long").val();
     var range = $("#range").val();
     var issue = $("#issue").val();
-    console.log("lat--" + lat);
-    console.log("long--" + long);
-    console.log("range--" + range);
-    console.log("issue--" + issue);
     var newSearch = new Search(lat, long, range, issue);
-    console.log("newSearch--" + newSearch);
     newSearch.getDoctors(displayDoctors);
   });
 });
