@@ -1,9 +1,11 @@
 var Search = require('./../js/search.js').searchModule;
 
 var displayDoctors = function(doctorData){
-  $("#output").text("We found " + doctorData.length + " doctors that matched your search results.")
+  $("#resultNumber").text("We found " + doctorData.length + " doctors that matched your search results.");
   console.log(doctorData.length);
-  console.log("I actually ran");
+  doctorData.forEach(function(doctor){
+    $("#doctorList").append("<li>" + doctor.profile.first_name + "</li>");
+  });
 };
 
 $(document).ready(function(){
