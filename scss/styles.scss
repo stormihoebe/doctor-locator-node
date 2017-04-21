@@ -1,1 +1,18 @@
-
+.container {
+  max-width: 1000px;
+  display: block;
+  margin: auto;
+}
+form{
+  max-width: 900px;
+  display: block;
+  margin: auto;
+}
+.jumbotron{
+  height: 50vh;
+ text-align: center;
+ background-image: url("/../img/medical.jpeg");
+ background-repeat: no-repeat;
+ background-size: cover;
+ background-color: rgba(66, 134, 244, .5);
+}

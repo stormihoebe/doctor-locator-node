@@ -1,7 +1,6 @@
 var Search = require('./../js/search.js').searchModule;
 
 var displayDoctors = function(doctorData){
-
   if (doctorData.length < 1) {
     $("#resultNumber").text("Sorry. We were not able to locate any doctors based on your search. To get better results try the search again with a more general Medical Issue or increase the Maximum Distance.");
   } else{
@@ -21,9 +20,20 @@ var displayDoctors = function(doctorData){
       );
     });
   }
+}; //end displayDoctors
+var displaySpecialties = function(specialtiesData) {
+  specialtiesData.forEach(function(specialty) {
+    console.log(specialty.uid);
+    $("#specialties").append(
+      "<option value='" + specialty.uid + "'>" + specialty.name + "</option>"
+    );
+  });
 };
 
+
 $(document).ready(function(){
+  var dummySearch = new Search("", "", "", "");
+  dummySearch.getSpecialties(displaySpecialties);
   // Call Geo Complete
   $("#address").geocomplete({details:"form#property"});
   $("#property").submit(function(event){
