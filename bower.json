@@ -1,0 +1,22 @@
+{
+  "name": "doctor-finder",
+  "description": "A simple doctor locator app using BetterDoctor API",
+  "main": "index.js",
+  "authors": [
+    "Stormi Hoebelheinrich"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.2.1",
+    "moment": "^2.18.1"
+  }
+}
