@@ -5,10 +5,9 @@ var displayDoctors = function(doctorData){
     $("#resultNumber").text("Sorry. We were not able to locate any doctors based on your search. To get better results try the search again with a more general Medical Issue or increase the Maximum Distance.");
   } else{
     $("#resultNumber").text("We found " + doctorData.length + " doctors that matched your search results.");
-    console.log(doctorData.length);
     doctorData.forEach(function(doctor){
       $("#doctorList").append(
-        "<div class='panel panel-default'> <div class='panel-heading'><h3 class='panel-title'> Dr. "+
+        "<div class='panel panel-default'> <div class='panel-heading'><h3 class='panel-title'>"+
         doctor.profile.first_name +" " + doctor.profile.last_name + " ("+doctor.profile.title+")"+
         "</h3></div><div class='panel-body'>" +
         "Specialties: "+ doctor.specialties[0].name + "<br>" +
@@ -23,7 +22,6 @@ var displayDoctors = function(doctorData){
 }; //end displayDoctors
 var displaySpecialties = function(specialtiesData) {
   specialtiesData.forEach(function(specialty) {
-    console.log(specialty.uid);
     $("#specialties").append(
       "<option value='" + specialty.uid + "'>" + specialty.name + "</option>"
     );
@@ -32,7 +30,7 @@ var displaySpecialties = function(specialtiesData) {
 
 
 $(document).ready(function(){
-  var dummySearch = new Search("", "", "", "");
+  var dummySearch = new Search("", "", "", "", "", "");
   dummySearch.getSpecialties(displaySpecialties);
   // Call Geo Complete
   $("#address").geocomplete({details:"form#property"});
@@ -40,12 +38,13 @@ $(document).ready(function(){
     event.preventDefault();
     $("#resultNumber").empty();
     $("#doctorList").empty();
-
     var lat = $("#lat").val();
     var long = $("#long").val();
     var range = $("#range").val();
     var issue = $("#issue").val();
-    var newSearch = new Search(lat, long, range, issue);
-    newSearch.getDoctors(displayDoctors);
+    var doctor = $("#doctor").val();
+    var specialties = $("#specialties").val();
+    var newSearch = new Search(lat, long, range, issue, specialties, doctor);
+    newSearch.fixUndefinedParams().getDoctors(displayDoctors);
   });
 });
