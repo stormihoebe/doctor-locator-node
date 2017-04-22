@@ -1,6 +1,12 @@
 var Search = require('./../js/search.js').searchModule;
 
 var displayDoctors = function(doctorData){
+  var special;
+  if (doctor.specialties > 0) {
+    special = doctor.specialties[0].name;
+  } else {
+    special = "";
+  }
   if (doctorData.length < 1) {
     $("#resultNumber").text("Sorry. We were not able to locate any doctors based on your search. To get better results try the search again with a more general Medical Issue or increase the Maximum Distance.");
   } else{
@@ -10,7 +16,7 @@ var displayDoctors = function(doctorData){
         "<div class='panel panel-default'> <div class='panel-heading'><h3 class='panel-title'>"+
         doctor.profile.first_name +" " + doctor.profile.last_name + " ("+doctor.profile.title+")"+
         "</h3></div><div class='panel-body'>" +
-        "Specialties: "+ doctor.specialties[0].name + "<br>" +
+        "Specialties: "+ special + "<br>" +
          doctor.profile.bio + "<br>" +
         "Gender: "+ doctor.profile.gender + "<br><strong>Location</strong><br>" +
         doctor.practices[0].visit_address.street + "<br>" +

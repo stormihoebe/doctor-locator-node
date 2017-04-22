@@ -12,13 +12,13 @@ Search.prototype.fixUndefinedParams = function(){
   if (this.medicalIssue === undefined){
 
     this.medicalIssue = "";
-  };
+  }
   if (this.specialties === undefined){
     this.specialties = "";
-  };
+  }
   if (this.doctor === undefined){
     this.doctor = "";
-  };
+  }
   return this;
 };
 // https://api.betterdoctor.com/2016-03-01/doctors?name=DOCTORNAME&specialty_uid=SPECIALTY&location=37.773%2C-122.413%2C3000&user_location=37.773%2C-122.413&skip=0&limit=10&user_key=ddc9e16aada8d7bbc57c23bb4b14aa56
