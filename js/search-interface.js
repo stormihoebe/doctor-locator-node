@@ -7,29 +7,26 @@ var displayDoctors = function(doctorData){
   } else{
     $("#resultNumber").text("We found " + doctorData.length + " doctors that matched your search results.");
     doctorData.forEach(function(doctor){
-      var getSpecial = function(){
-        if (doctor.specialties.length > 1) {
+        if (!doctor.specialties || doctor.specialties.length === 0){
+          special = "";
+        } else if (doctor.specialties.length > 1) {
           special = doctor.specialties[0].name + ", " + doctor.specialties[1].name;
         } else if (doctor.specialties.length === 1){
           special = doctor.specialties[0].name;
         } else {
           special = "";
         }
-        return special;
-      }
       $("#doctorList").append(
         "<div class='panel panel-default'> <div class='panel-heading'><h3 class='panel-title'>"+
         doctor.profile.first_name +" " + doctor.profile.last_name + " ("+doctor.profile.title+")"+
         "</h3></div><div class='panel-body'>" +
-        "Specialties: "+ getSpecial() + "<br>" +
+        "Specialties: "+ special + "<br>" +
          doctor.profile.bio + "<br>" +
         "Gender: "+ doctor.profile.gender + "<br><strong>Location</strong><br>" +
         doctor.practices[0].visit_address.street + "<br>" +
         doctor.practices[0].visit_address.city + ", " + doctor.practices[0].visit_address.state + " " + doctor.practices[0].visit_address.zip + "<br>" +
         "</div></div>"
       );
-      console.log(doctor.specialties[0].name);
-      console.log(getSpecial());
     });
   }
   $('html,body').animate({
