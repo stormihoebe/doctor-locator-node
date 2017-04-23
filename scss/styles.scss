@@ -1,4 +1,12 @@
+a {
+  text-decoration: none;
+  color: grey;
+}
 
+a:hover {
+  text-decoration: none;
+  color: black;
+}
 .container {
   max-width: 1000px;
   display: block;
@@ -22,7 +30,18 @@ form{
   h3{
     color: white;
   }
-
+}
+footer{
+  text-align: center;
+  padding-top: 30px;
+  img{
+    display: block;
+    margin: auto;
+    margin-bottom: 5px;
+  }
+  p {
+    margin-bottom: 20px;
+  }
 }
 
 #property{
@@ -32,4 +51,23 @@ form{
   height: 100%;
   border-radius: .40rem;
   padding-bottom: 50px;
+}
+
+.wiggler:hover {
+	animation: .3s ease 0s forwards wiggle;
+}
+
+@keyframes wiggle {
+	0% {
+		transform: rotate(0deg);
+	}
+	33% {
+		transform: rotate(5deg);
+	}
+	66% {
+		transform: rotate(-5deg);
+	}
+	100% {
+		transform: rotate(0deg);
+	}
 }
