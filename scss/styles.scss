@@ -1,3 +1,4 @@
+
 .container {
   max-width: 1000px;
   display: block;
@@ -14,6 +15,14 @@ form{
   background-image: url("/../img/medical.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
+  h1{
+    font-family: 'Baloo Bhaina', cursive;
+    color: white;
+  }
+  h3{
+    color: white;
+  }
+
 }
 
 #property{
