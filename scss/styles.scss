@@ -9,10 +9,18 @@ form{
   margin: auto;
 }
 .jumbotron{
-  height: 50vh;
- text-align: center;
- background-image: url("/../img/medical.jpeg");
- background-repeat: no-repeat;
- background-size: cover;
- background-color: rgba(66, 134, 244, .5);
+  height: 100vh;
+  text-align: center;
+  background-image: url("/../img/medical.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#property{
+  margin-top: 30px;
+  background-color: rgba(255, 255, 255, .9);
+  padding: 30px;
+  height: 100%;
+  border-radius: .40rem;
+  padding-bottom: 50px;
 }

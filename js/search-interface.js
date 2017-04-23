@@ -35,7 +35,9 @@ var displaySpecialties = function(specialtiesData) {
 };
 
 
+
 $(document).ready(function(){
+
   var dummySearch = new Search("", "", "", "", "", "");
   dummySearch.getSpecialties(displaySpecialties);
   // Call Geo Complete
